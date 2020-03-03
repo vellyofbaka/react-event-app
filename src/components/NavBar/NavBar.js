@@ -1,8 +1,10 @@
 import React from 'react';
-import { Menu, Container, Button, Icon } from 'semantic-ui-react';
+import { Menu, Container, Button, Icon, Segment } from 'semantic-ui-react';
 import { useSelector } from 'react-redux';
 import { NavLink, Link, withRouter } from 'react-router-dom';
 import { useFirebase } from 'react-redux-firebase';
+import SignedInMenu from '../Menu/SignedInMenu';
+import SignedOutMenu from '../Menu/SignedOutMenu';
 
 const NavBar = ({ history }) => {
   const firebase = useFirebase();
@@ -19,7 +21,8 @@ const NavBar = ({ history }) => {
   const authenticated = auth.isLoaded && !auth.isEmpty;
 
   return (
-    <Menu inverted fixed="top">
+    // <Segment inverted color="gray">
+    <Menu secondary fixed="top">
       <Container>
         <Menu.Item as={Link} to="/" header name="Event App">
           {/* <h3>Event App</h3> */}
@@ -40,9 +43,14 @@ const NavBar = ({ history }) => {
             </Menu.Item>
           </>
         )}
+        {authenticated ? (
+          <SignedInMenu signOut={handleLogout} />
+        ) : (
+          <SignedOutMenu />
+        )}
       </Container>
-      <h1>NavBar</h1>
     </Menu>
+    // </Segment>
   );
 };
 

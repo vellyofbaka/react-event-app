@@ -11,24 +11,38 @@ import UserDetailedPage from './pages/UserDetailedPage/UserDetailedPage';
 import SettingsDashboard from './pages/SettingsDashboard/SettingsDashboard';
 import EventForm from './components/EventForm/EventForm';
 import NavBar from './components/NavBar/NavBar';
+// import { UserIsAuthenticated } from './util/AuthWrapper';
 
 function App() {
   const auth = useSelector(state => state.firebase.auth, []);
   if (!auth.isLoaded && auth.isEmpty) return <Spinner />;
   return (
     <>
-      <NavBar />
-      <Container className="main">
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route exact path="/events" component={EventDashboard} />
-          <Route path={['/manage/:id', '/createEvent']} component={EventForm} />
-          <Route path="/people" component={PeopleDashboard} />
-          <Route path="/profile/:id" component={UserDetailedPage} />
-          <Route path="/settings" component={SettingsDashboard} />
-          <Route component={NotFound} />
-        </Switch>
-      </Container>
+      {/* <ModalManager/> */}
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+      </Switch>
+      <Route
+        path="/(.+)"
+        render={() => (
+          <>
+            <NavBar />
+            <Container className="main">
+              <Switch>
+                <Route exact path="/events" component={EventDashboard} />
+                <Route
+                  path={['/manage/:id', '/createEvent']}
+                  component={EventForm}
+                />
+                <Route path="/people" component={PeopleDashboard} />
+                <Route path="/profile/:id" component={UserDetailedPage} />
+                <Route path="/settings" component={SettingsDashboard} />
+                <Route component={NotFound} />
+              </Switch>
+            </Container>
+          </>
+        )}
+      />
     </>
   );
 }
