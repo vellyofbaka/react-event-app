@@ -1,13 +1,61 @@
 import React, { useState, useEffect } from 'react';
 import { Grid, Loader } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useFirestore } from 'react-redux-firebase';
+import { useFirestoreConnect } from 'react-redux-firebase';
+import EventDetailedHeader from './EventDetailedHeader';
+import Spinner from '../../components/Loading';
+import { objectToArray } from '../../util/helpers';
+import NotFound from '../../components/404';
+import EventDetailedInfo from './EventDetailedInfo';
+import EventDetailedChat from './EventDetailedChat';
+import EventDetailedSidebar from './EventDetailedSidebar';
 
-const EventDetailedPage = () => {
+const EventDetailedPage = ({ match: { params } }) => {
+  useFirestoreConnect(`events/${params.id}`);
+  const event = useSelector(
+    state =>
+      (state.firestore.ordered.events &&
+        state.firestore.ordered.events.filter(e => e.id === params.id)[0]) ||
+      {},
+    []
+  );
+
+  const auth = useSelector(state => state.firebase.auth, []);
+
+  const attendees =
+    event &&
+    event.attendees &&
+    objectToArray(event.attendees).sort((a, b) => {
+      return a.joinDate.toDate() - b.joinDate.toDate();
+    });
+
+  const isHost = event && event.hostUid === auth.uid;
+  const isGoing = attendees && attendees.some(a => a.id === auth.uid);
+  const authenticated = auth.isLoaded && !auth.isEmpty;
+  const loadingEvent = useSelector(
+    state => state.firestore.status.requesting[`events/${params.id}`],
+    []
+  );
+
+  if (loadingEvent) return <Spinner />;
+  if (Object.keys(event).length === 0) return <NotFound />;
+
   return (
-    <div>
-      <h1>EventDetailedPage</h1>
-    </div>
+    <Grid>
+      <Grid.Column width={10}>
+        <EventDetailedHeader
+          event={event}
+          isHost={isHost}
+          isGoing={isGoing}
+          authenticated={authenticated}
+        />
+        <EventDetailedInfo event={event} />
+        {authenticated && <EventDetailedChat eventId={event.id} />}
+      </Grid.Column>
+      <Grid.Column width={6}>
+        <EventDetailedSidebar attendees={attendees} />
+      </Grid.Column>
+    </Grid>
   );
 };
 

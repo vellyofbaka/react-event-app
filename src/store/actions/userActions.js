@@ -1,11 +1,11 @@
 import { toastr } from 'react-redux-toastr';
 import cuid from 'cuid';
+import { GET_USER_EVENTS } from '../actionTypes';
 import {
   asyncActionError,
   asyncActionFinish,
-  asyncActionStart,
-  GET_USER_EVENTS
-} from '../actionTypes';
+  asyncActionStart
+} from './asyncActions';
 import firebase from '../../config/firebase';
 
 export const updateProfile = ({ firebase }, user) => {
