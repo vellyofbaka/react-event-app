@@ -7,7 +7,7 @@ import NotFound from './components/404';
 import HomePage from './pages/HomePage/HomePage';
 import EventDashboard from './pages/EventDashboard/EventDashboard';
 import PeopleDashboard from './pages/PeopleDashboard/PeopleDashboard';
-import UserDetailedPage from './pages/UserDetailedPage/UserDetailedPage';
+import UserDetailedPage from './pages/UserDetailed/UserDetailedPage';
 import SettingsDashboard from './pages/SettingsDashboard/SettingsDashboard';
 import EventForm from './components/Form/EventForm';
 import NavBar from './components/NavBar/NavBar';
