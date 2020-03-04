@@ -11,6 +11,7 @@ import UserDetailedPage from './pages/UserDetailedPage/UserDetailedPage';
 import SettingsDashboard from './pages/SettingsDashboard/SettingsDashboard';
 import EventForm from './components/EventForm/EventForm';
 import NavBar from './components/NavBar/NavBar';
+import ModalManager from './components/Modals/ModalManager';
 // import { UserIsAuthenticated } from './util/AuthWrapper';
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
   if (!auth.isLoaded && auth.isEmpty) return <Spinner />;
   return (
     <>
-      {/* <ModalManager/> */}
+      <ModalManager />
       <Switch>
         <Route exact path="/" component={HomePage} />
       </Switch>

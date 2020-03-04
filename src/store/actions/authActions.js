@@ -1,4 +1,4 @@
-import { closeModal } from '../actionTypes';
+import { closeModal } from './modalActions';
 import { SubmissionError, reset } from 'redux-form';
 import toastr from 'react-redux-toastr';
 
