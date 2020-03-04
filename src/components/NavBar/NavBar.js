@@ -22,23 +22,22 @@ const NavBar = ({ history }) => {
 
   return (
     // <Segment inverted color="gray">
-    <Menu secondary fixed="top">
+    <Menu inverted fixed="top">
       <Container>
-        <Menu.Item as={Link} to="/" header name="Event App">
-          {/* <h3>Event App</h3> */}
-        </Menu.Item>
-        <Menu.Item as={NavLink} exact to="/events" name="Events" />
+        <Menu.Item as={Link} to="/" header name="Event App"></Menu.Item>
+        <Menu.Item as={NavLink} exact to="/events" name="이벤트" />
         {authenticated && (
           <>
-            <Menu.Item as={NavLink} to="/people" name="People" />
+            <Menu.Item as={NavLink} to="/people" name="회원정보" />
             <Menu.Item>
               <Button
                 as={Link}
                 to="/createEvent"
                 floated="right"
-                positive
-                inverted
-                content="Create Event"
+                // positive
+                // inverted
+                primary
+                content="이벤트 생성"
               />
             </Menu.Item>
           </>

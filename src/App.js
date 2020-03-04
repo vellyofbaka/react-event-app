@@ -9,7 +9,7 @@ import EventDashboard from './pages/EventDashboard/EventDashboard';
 import PeopleDashboard from './pages/PeopleDashboard/PeopleDashboard';
 import UserDetailedPage from './pages/UserDetailedPage/UserDetailedPage';
 import SettingsDashboard from './pages/SettingsDashboard/SettingsDashboard';
-import EventForm from './components/EventForm/EventForm';
+import EventForm from './components/Form/EventForm';
 import NavBar from './components/NavBar/NavBar';
 import ModalManager from './components/Modals/ModalManager';
 // import { UserIsAuthenticated } from './util/AuthWrapper';

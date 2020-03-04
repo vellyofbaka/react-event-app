@@ -26,7 +26,7 @@
     "react-scripts": "3.4.0",
     "redux": "^4.0.5",
     "redux-auth-wrapper": "^3.0.0",
-    "redux-firestore": "^0.13.0",
+    "redux-firestore": "1.0.0-alpha.2",
     "redux-form": "^8.3.0",
     "redux-thunk": "^2.3.0",
     "revalidate": "^1.2.0",

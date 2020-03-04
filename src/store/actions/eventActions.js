@@ -2,9 +2,9 @@ import { toastr } from 'react-redux-toastr';
 import {
   asyncActionStart,
   asyncActionFinish,
-  asyncActionError,
-  MORE_EVENTS
-} from '../actionTypes';
+  asyncActionError
+} from './asyncActions';
+import { MORE_EVENTS } from '../actionTypes';
 import { createNewEvent, objectToArray } from '../../util/helpers';
 
 export const createEvent = ({ firebase, firestore }, event) => {
