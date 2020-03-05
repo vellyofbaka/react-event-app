@@ -5,7 +5,7 @@ const UserDetailedPhotos = ({ photos }) => {
   return (
     <Grid.Column width={12}>
       <Segment attached>
-        <Header icon="image" content="Photos" />
+        <Header icon="images" content="프로필 사진" />
 
         <Image.Group size="small">
           {photos &&

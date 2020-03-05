@@ -37,44 +37,45 @@ const EventDetailedHeader = ({ event, isHost, isGoing, authenticated }) => {
           fluid
           style={eventImageStyle}
         />
-      </Segment>
-      <Segment basic style={eventImageTextStyle}>
-        <Item.Group>
-          <Item>
-            <Item.Content>
-              <Header
-                size="huge"
-                content={event.title}
-                style={{ color: 'white' }}
-              />
-              <p>{format(event.date && event.date.toDate(), 'EEEE do LLLL')}</p>
-              <p>
-                Hosted by{' '}
-                <strong>
-                  <Link to={`/profile/${event.hostUid}`}>{event.hostedBy}</Link>
-                </strong>
-              </p>
-            </Item.Content>
-          </Item>
-        </Item.Group>
+        <Segment basic style={eventImageTextStyle}>
+          <Item.Group>
+            <Item>
+              <Item.Content>
+                <Header
+                  size="huge"
+                  content={event.title}
+                  style={{ color: 'white', marginBottom: '10px' }}
+                />
+                <p>
+                  {format(event.date && event.date.toDate(), 'EEEE do LLLL')}
+                </p>
+                <p>
+                  Hosted by{' '}
+                  <strong>
+                    <Link to={`/profile/${event.hostUid}`}>
+                      {event.hostedBy}
+                    </Link>
+                  </strong>
+                </p>
+              </Item.Content>
+            </Item>
+          </Item.Group>
+        </Segment>
       </Segment>
       <Segment attached="bottom" clearing>
         {event.cancelled && (
-          <Label
-            size="large"
-            color="red"
-            content="This event has been cancelled"
-          />
+          <Label size="large" color="red" content="이벤트가 취소 되었습니다" />
         )}
         {!isHost && (
           <>
             {isGoing && !event.cancelled && (
               <Button
+                negative
                 onClick={() =>
                   dispatch(cancelGoingToEvent({ firebase, firestore }, event))
                 }
               >
-                Cancel My Place
+                이벤트 취소
               </Button>
             )}
             {!isGoing && authenticated && !event.cancelled && (
@@ -85,7 +86,7 @@ const EventDetailedHeader = ({ event, isHost, isGoing, authenticated }) => {
                 }
                 color="teal"
               >
-                JOIN THIS EVENT
+                이벤트 참가
               </Button>
             )}
             {!authenticated && !event.cancelled && (
@@ -94,7 +95,7 @@ const EventDetailedHeader = ({ event, isHost, isGoing, authenticated }) => {
                 onClick={() => dispatch(openModal('UnauthModal'))}
                 color="teal"
               >
-                JOIN THIS EVENT
+                이벤트 참가
               </Button>
             )}
           </>

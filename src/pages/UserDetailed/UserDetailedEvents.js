@@ -4,17 +4,17 @@ import { Link } from 'react-router-dom';
 import { format } from 'date-fns';
 
 const panes = [
-  { menuItem: 'All Events', panse: { key: 'allEvents' } },
-  { menuItem: 'Past Events', panse: { key: 'pastEvents' } },
-  { menuItem: 'Future Events', panse: { key: 'futureEvents' } },
-  { menuItem: 'Hosting', panse: { key: 'hosted' } }
+  { menuItem: '모든 이벤트', panse: { key: 'allEvents' } },
+  { menuItem: '지난 이벤트', panse: { key: 'pastEvents' } },
+  { menuItem: '다가오는 이벤트', panse: { key: 'futureEvents' } },
+  { menuItem: '호스팅', panse: { key: 'hosted' } }
 ];
 
 const UserDetailedEvents = ({ changeTab, events, loading }) => {
   return (
     <Grid.Column width={12}>
       <Segment attached loading={loading}>
-        <Header icon="calendar" content="Events" />
+        <Header icon="calendar alternate" content="이벤트" />
         <Tab
           onTabChange={(e, data) => changeTab(e, data)}
           panes={panes}

@@ -23,8 +23,7 @@ const UserDetailedHeader = ({ profile }) => {
               <Header as="h3">{profile.occupation}</Header>
               <br />
               <Header as="h3">
-                {age || 'Unknown age'}, Lives in{' '}
-                {profile.city || 'Unknown city'}
+                나이: {age || '비공개'}, 사는 곳: {profile.city || '비공개'}
               </Header>
             </Item.Content>
           </Item>

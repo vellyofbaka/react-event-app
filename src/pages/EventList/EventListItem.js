@@ -24,7 +24,7 @@ const EventListItem = ({ event }) => (
                 style={{ top: '-40px' }}
                 ribbon="right"
                 color="red"
-                content="This event has been cancelled"
+                content="이벤트가 취소 되었습니다"
               />
             )}
           </Item.Content>
@@ -52,7 +52,7 @@ const EventListItem = ({ event }) => (
       <Button
         as={Link}
         to={`/events/${event.id}`}
-        color="purple"
+        color="teal"
         floated="right"
         content="View"
       />

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Loader, Divider } from 'semantic-ui-react';
+import { Grid, Loader } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useFirestore } from 'react-redux-firebase';
 import EventList from '../EventList/EventList';

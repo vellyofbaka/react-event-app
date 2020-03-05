@@ -12,20 +12,22 @@ const UserDetailedDescription = ({ profile }) => {
       <Segment>
         <Grid columns={2}>
           <Grid.Column width={10}>
-            <Header icon="smile" content={`About ${profile.displayName}`} />
+            <Header
+              icon="smile outline"
+              content={`About ${profile.displayName}`}
+            />
             <p>
-              I am a: <strong>{profile.occupation || 'tbn'}</strong>
+              직업: <strong>{profile.occupation || '비공개'}</strong>
             </p>
             <p>
-              Originally from <strong>{profile.origin || 'tbn'}</strong>
+              태어난 곳: <strong>{profile.origin || '비공개'}</strong>
             </p>
             <p>
-              Member Since: <strong>{createdAt}</strong>
+              회원 가입: <strong>{createdAt}</strong>
             </p>
-            <p>Description of user</p>
           </Grid.Column>
           <Grid.Column width={6}>
-            <Header icon="heart outline" content="Interests" />
+            <Header icon="heart outline" content="관심사" />
             {profile.interests ? (
               <List>
                 {profile.interests &&
@@ -37,7 +39,7 @@ const UserDetailedDescription = ({ profile }) => {
                   ))}
               </List>
             ) : (
-              <p>No interests</p>
+              <p>비공개</p>
             )}
           </Grid.Column>
         </Grid>

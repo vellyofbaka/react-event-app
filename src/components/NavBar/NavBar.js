@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, Container, Button, Icon, Segment } from 'semantic-ui-react';
+import { Menu, Container, Button } from 'semantic-ui-react';
 import { useSelector } from 'react-redux';
 import { NavLink, Link, withRouter } from 'react-router-dom';
 import { useFirebase } from 'react-redux-firebase';
@@ -28,7 +28,6 @@ const NavBar = ({ history }) => {
         <Menu.Item as={NavLink} exact to="/events" name="이벤트" />
         {authenticated && (
           <>
-            <Menu.Item as={NavLink} to="/people" name="회원정보" />
             <Menu.Item>
               <Button
                 as={Link}

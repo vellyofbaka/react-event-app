@@ -13,9 +13,7 @@ export const updateProfile = ({ firebase }, user) => {
     const { isLoaded, isEmpty, ...updatedUser } = user;
     try {
       await firebase.updateProfile(updatedUser);
-      dispatch(() =>
-        toastr.success('Success', 'Your profile has been updated')
-      );
+      dispatch(() => toastr.success('성공', '프로필이 업데이트 되었습니다'));
     } catch (error) {
       console.log(error);
     }
@@ -159,14 +157,13 @@ export const goingToEvent = ({ firebase, firestore }, event) => async (
       eventDate: event.date,
       host: false
     });
-    toastr.success('Success', 'You have signed up to the event');
+    toastr.success('성공', '이벤트에 등록하였습니다');
   } catch (error) {
     console.log(error);
-    toastr.error('Oops', 'Problem signing up to the event');
+    toastr.error('실패', '정상적으로 등록되지 않았습니다');
   }
 };
 
-//TODO: this still contains the FieldValue.delete() bug so it will not remove the event from the reducer
 export const cancelGoingToEvent = (
   { firebase, firestore },
   event
@@ -177,14 +174,13 @@ export const cancelGoingToEvent = (
       [`attendees.${user.uid}`]: firestore.FieldValue.delete()
     });
     await firestore.delete(`event_attendee/${event.id}_${user.uid}`);
-    toastr.success('Success', 'You have removed yourself from the event');
+    toastr.success('성공', '이벤트에서 탈퇴하였습니다');
   } catch (error) {
     console.log(error);
-    toastr.error('Oops', 'Something went wrong');
+    toastr.error('실패', '정상적으로 탈퇴되지 않았습니다');
   }
 };
 
-//TODO: check to see if there is a way to preserve the data in ordered reducer when using RRF
 export const getUserEvents = (userUid, activeTab) => async (
   dispatch,
   getState

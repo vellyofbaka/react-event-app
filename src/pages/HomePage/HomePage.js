@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Container,
-  Segment,
-  Header,
-  Image,
-  Button,
-  Icon
-} from 'semantic-ui-react';
+import { Container, Segment, Header, Button, Icon } from 'semantic-ui-react';
 
 const HomePage = ({ history }) => {
   return (
@@ -19,12 +12,6 @@ const HomePage = ({ history }) => {
     >
       <Container text>
         <Header as="h1" inverted>
-          {/* <Image
-            size='massive'
-            src='/assets/logo.png'
-            alt='logo'
-            style={{ marginBottom: 12 }}
-          /> */}
           Event App
         </Header>
         <Button

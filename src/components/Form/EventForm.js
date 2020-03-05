@@ -1,5 +1,4 @@
 /*global google*/
-
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
@@ -43,7 +42,7 @@ const validate = combineValidators({
 });
 
 const category = [
-  { key: 'drinks', text: '호프/술', value: 'drinks' },
+  { key: 'drinks', text: '음주', value: 'drinks' },
   { key: 'culture', text: '문화', value: 'culture' },
   { key: 'film', text: '영화', value: 'film' },
   { key: 'food', text: '음식', value: 'food' },
@@ -120,7 +119,7 @@ const EventForm = ({
     <Grid>
       <Grid.Column width={10}>
         <Segment>
-          <Header color="gray" content="이벤트 정보" />
+          <Header content="이벤트 정보" />
           <Form onSubmit={handleSubmit(handleFormSubmit)}>
             <Field
               name="title"
@@ -142,7 +141,7 @@ const EventForm = ({
               component={TextArea}
               placeholder="이벤트에 대한 간단한 소개"
             />
-            <Header color="gray" content="이벤트 장소" />
+            <Header content="이벤트 장소" />
             <Field
               name="city"
               type="text"

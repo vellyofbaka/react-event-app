@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { Grid, Loader } from 'semantic-ui-react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { Grid } from 'semantic-ui-react';
+import { useSelector } from 'react-redux';
 import { useFirestoreConnect } from 'react-redux-firebase';
 import EventDetailedHeader from './EventDetailedHeader';
-import Spinner from '../../components/Loading';
-import { objectToArray } from '../../util/helpers';
-import NotFound from '../../components/404';
 import EventDetailedInfo from './EventDetailedInfo';
 import EventDetailedChat from './EventDetailedChat';
 import EventDetailedSidebar from './EventDetailedSidebar';
+import Spinner from '../../components/Loading';
+import { objectToArray } from '../..//util/helpers';
+import NotFound from '../../components/404';
 
 const EventDetailedPage = ({ match: { params } }) => {
   useFirestoreConnect(`events/${params.id}`);
+
   const event = useSelector(
     state =>
       (state.firestore.ordered.events &&

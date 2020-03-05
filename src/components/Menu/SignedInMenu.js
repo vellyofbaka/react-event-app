@@ -16,22 +16,18 @@ const SignedInMenu = ({ signOut }) => {
       />
       <Dropdown pointing="top left" text={profile.displayName}>
         <Dropdown.Menu>
-          <Dropdown.Item text="Create Event" icon="plus" />
-          <Dropdown.Item text="My Events" icon="calendar" />
-          <Dropdown.Item text="My Network" icon="users" />
           <Dropdown.Item
             as={Link}
             to={`/profile/${auth.uid}`}
-            text="My Profile"
-            icon="user"
+            text="프로파일"
+            icon="user circle"
           />
+          <Dropdown.Item as={Link} to="/settings" text="세팅" icon="setting" />
           <Dropdown.Item
-            as={Link}
-            to="/settings"
-            text="Settings"
-            icon="settings"
+            onClick={signOut}
+            text="나가기"
+            icon="sign out alternate"
           />
-          <Dropdown.Item onClick={signOut} text="Sign Out" icon="power" />
         </Dropdown.Menu>
       </Dropdown>
     </Menu.Item>

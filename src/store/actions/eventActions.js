@@ -20,10 +20,10 @@ export const createEvent = ({ firebase, firestore }, event) => {
         eventDate: event.date,
         host: true
       });
-      toastr.success('Success!', 'Event has been created');
+      toastr.success('성공', '이벤트가 등록 되었습니다');
       return createdEvent;
     } catch (error) {
-      toastr.error('Oops', 'Something went wrong');
+      toastr.error('실패', '정상적으로 등록되지 않았습니다');
     }
   };
 };
@@ -61,11 +61,11 @@ export const updateEvent = ({ firestore }, event) => {
       } else {
         await eventDocRef.update(event);
       }
-      toastr.success('Success!', 'Event has been updated');
+      toastr.success('성공!', '이벤트가 업데이트 되었습니다');
       dispatch(asyncActionFinish());
     } catch (error) {
       dispatch(asyncActionError());
-      toastr.error('Oops', 'Something went wrong');
+      toastr.error('실패', '정상적으로 업데이트 되지 않았습니다');
     }
   };
 };
@@ -76,8 +76,8 @@ export const cancelToggle = (
   eventId
 ) => async dispatch => {
   const message = cancelled
-    ? 'Are you sure you want to cancel the event?'
-    : 'This will reactivate the event - are you sure?Ì';
+    ? '이벤트를 정말 취소하기 원하세요?'
+    : '이벤트를 다시 활성화하기 원하세요?';
   try {
     toastr.confirm(message, {
       onOk: () =>
@@ -142,6 +142,6 @@ export const addEventComment = (
     await firebase.push(`event_chat/${eventId}`, newComment);
   } catch (error) {
     console.log(error);
-    toastr.error('Oops', 'Problem adding comment');
+    toastr.error('실패', '댓글이 추가되지 않았습니다');
   }
 };

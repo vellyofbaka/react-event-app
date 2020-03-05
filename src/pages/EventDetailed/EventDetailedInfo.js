@@ -10,7 +10,7 @@ const EventDetailedInfo = ({ event }) => {
       <Segment attached="top">
         <Grid>
           <Grid.Column width={1}>
-            <Icon size="large" color="gray" name="info circle" />
+            <Icon size="large" color="grey" name="info circle" />
           </Grid.Column>
           <Grid.Column width={15}>
             <p>{event.description}</p>
@@ -20,7 +20,7 @@ const EventDetailedInfo = ({ event }) => {
       <Segment attached>
         <Grid verticalAlign="middle">
           <Grid.Column width={1}>
-            <Icon name="calendar alternate outline" size="large" color="gray" />
+            <Icon name="calendar alternate outline" size="large" color="grey" />
           </Grid.Column>
           <Grid.Column width={15}>
             {event.date && (
@@ -35,17 +35,18 @@ const EventDetailedInfo = ({ event }) => {
       <Segment attached>
         <Grid verticalAlign="middle">
           <Grid.Column width={1}>
-            <Icon name="map marker alternate" size="large" color="gray" />
+            <Icon name="map marker alternate" size="large" color="grey" />
           </Grid.Column>
           <Grid.Column width={11}>
             <span>{event.venue}</span>
           </Grid.Column>
           <Grid.Column width={4}>
             <Button
+              icon="map"
               onClick={() => setShowMap(!showMap)}
-              color="red"
+              color="orange"
               size="tiny"
-              content={showMap ? 'Hide Map' : 'Show Map'}
+              content={showMap ? '지도 감추기' : '지도 보기'}
             />
           </Grid.Column>
         </Grid>

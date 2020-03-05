@@ -26,7 +26,7 @@ const EventDetailedChatForm = ({
   return (
     <Form onSubmit={handleSubmit(handleCommentSubmit)}>
       <Field name="comment" type="text" component={TextArea} rows={2} />
-      <Button content="Add Reply" labelPosition="left" icon="edit" primary />
+      <Button content="댓글 추가" labelPosition="left" icon="edit" primary />
     </Form>
   );
 };
