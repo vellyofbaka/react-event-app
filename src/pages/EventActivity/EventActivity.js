@@ -1,10 +1,11 @@
-import React, { useCallback, useMemo } from 'react';
-import { Header, Segment, Feed, Sticky } from 'semantic-ui-react';
+import React, { useCallback, useMemo, useRef } from 'react';
+import { Header, Segment, Feed, Sticky, Ref, Rail } from 'semantic-ui-react';
 import { useFirestoreConnect } from 'react-redux-firebase';
 import { useSelector } from 'react-redux';
 import EventActivityItem from './EventActivityItem';
 
-const EventActivity = ({ contextRef }) => {
+const EventActivity = () => {
+  const contextRef = useRef();
   const query = useMemo(
     () => ({
       collection: 'activity',
@@ -22,17 +23,21 @@ const EventActivity = ({ contextRef }) => {
   const activities = useSelector(activitySelector);
 
   return (
-    <Sticky context={contextRef} offset={100} styleElement={{ zIndex: 0 }}>
-      <Header attached="top" content="최근 활동" />
-      <Segment attached>
-        <Feed>
-          {activities &&
-            activities.map(activity => (
-              <EventActivityItem key={activity.id} activity={activity} />
-            ))}
-        </Feed>
-      </Segment>
-    </Sticky>
+    <Ref innerRef={contextRef}>
+      <Rail internal position="right">
+        <Sticky context={contextRef} offset={100} styleElement={{ zIndex: 0 }}>
+          <Header attached="top" content="최근 활동" />
+          <Segment attached>
+            <Feed>
+              {activities &&
+                activities.map(activity => (
+                  <EventActivityItem key={activity.id} activity={activity} />
+                ))}
+            </Feed>
+          </Segment>
+        </Sticky>
+      </Rail>
+    </Ref>
   );
 };
 

@@ -77,7 +77,7 @@ const AboutPage = ({ pristine, submitting, handleSubmit }) => {
           name="origin"
           options={{ types: ['(regions)'] }}
           component={PlaceInput}
-          placeholder="태어난 나라"
+          placeholder="사는 곳"
         />
         <Divider />
         <Button

@@ -23,12 +23,10 @@ const EventDetailedPage = ({ match: { params } }) => {
 
   const auth = useSelector(state => state.firebase.auth, []);
 
-  const attendees =
-    event &&
-    event.attendees &&
-    objectToArray(event.attendees).sort((a, b) => {
-      return a.joinDate.toDate() - b.joinDate.toDate();
-    });
+  const attendees = event && event.attendees && objectToArray(event.attendees);
+  // .sort((a, b) => {
+  //   return a.joinDate.toDate() - b.joinDate.toDate();
+  // });
 
   const isHost = event && event.hostUid === auth.uid;
   const isGoing = attendees && attendees.some(a => a.id === auth.uid);

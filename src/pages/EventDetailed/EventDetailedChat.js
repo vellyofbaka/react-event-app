@@ -29,15 +29,16 @@ const EventDetailedChat = ({ eventId }) => {
   };
   return (
     <div>
-      <Segment
+      <Header attached dividing icon="chat" content="댓글 창" />
+      {/* <Segment
         textAlign="center"
         attached="top"
         inverted
         color="teal"
         style={{ border: 'none' }}
       >
-        <Header>문의 사항은 댓글을 달아주세요</Header>
-      </Segment>
+        
+      </Segment> */}
 
       <Segment attached>
         <Comment.Group>

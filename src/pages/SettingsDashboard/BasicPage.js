@@ -72,7 +72,7 @@ const BasicPage = ({ pristine, submitting, handleSubmit, initialValues }) => {
           disabled={pristine || submitting}
           size="large"
           positive
-          content="업데이트 프로파일"
+          content="업데이트 프로필"
         />
       </Form>
     </Segment>
